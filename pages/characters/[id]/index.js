@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 
 import Head from "../../../components/Head";
 import Navigation from "../../../components/Navigation";
@@ -9,6 +10,16 @@ const MapNoSSR = dynamic(() => import("../../../components/Map"), {
 });
 
 export default function CharacterPage({ character }) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return (
+      <div>
+        <title>Loading... | Rick and Morty characters</title>
+        <div>Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Head>
@@ -32,14 +43,26 @@ export default function CharacterPage({ character }) {
   );
 }
 
-CharacterPage.getInitialProps = async function(ctx) {
+export async function getStaticPaths() {
+  const response = await fetch(`https://rickandmortyapi.com/api/character/`);
+  const characters = await response.json();
+
+  return {
+    paths: characters.results.map(character => ({
+      params: { id: String(character.id) }
+    })),
+    fallback: true
+  };
+}
+
+export async function getStaticProps(ctx) {
   debug(ctx);
-  const id = ctx.query.id;
+  const id = ctx.params.id;
   const response = await fetch(
     `https://rickandmortyapi.com/api/character/${id}`
   );
   const character = await response.json();
   return {
-    character
+    props: { character }
   };
-};
+}
