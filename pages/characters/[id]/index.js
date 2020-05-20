@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 
 import Head from "../../../components/Head";
 import Navigation from "../../../components/Navigation";
+import debug from "../../../helpers/debug";
 
 const MapNoSSR = dynamic(() => import("../../../components/Map"), {
   ssr: false
@@ -32,6 +33,7 @@ export default function CharacterPage({ character }) {
 }
 
 CharacterPage.getInitialProps = async function(ctx) {
+  debug(ctx);
   const id = ctx.query.id;
   const response = await fetch(
     `https://rickandmortyapi.com/api/character/${id}`

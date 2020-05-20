@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import Head from "../../components/Head";
 import Navigation from "../../components/Navigation";
+import debug from "../../helpers/debug";
 
 export default function CharactersPage({ characters }) {
   return (
@@ -16,7 +17,7 @@ export default function CharactersPage({ characters }) {
       {characters &&
         characters.map(character => {
           return (
-            <div>
+            <div key={`/characters/${character.id}`}>
               <Link href="/characters/[id]" as={`/characters/${character.id}`}>
                 <a>
                   <figure>
@@ -33,6 +34,7 @@ export default function CharactersPage({ characters }) {
 }
 
 CharactersPage.getInitialProps = async function(ctx) {
+  debug(ctx);
   const response = await fetch("https://rickandmortyapi.com/api/character/");
   const characters = await response.json();
   return {
