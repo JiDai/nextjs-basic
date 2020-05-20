@@ -1,5 +1,11 @@
+import dynamic from "next/dynamic";
+
 import Head from "../../../components/Head";
 import Navigation from "../../../components/Navigation";
+
+const MapNoSSR = dynamic(() => import("../../../components/Map"), {
+  ssr: false
+});
 
 export default function CharacterPage({ character }) {
   return (
@@ -9,6 +15,7 @@ export default function CharacterPage({ character }) {
       </Head>
 
       <Navigation />
+
       <h1>{character.name}</h1>
       <img src={character.image} alt="" />
       <div>
@@ -16,6 +23,10 @@ export default function CharacterPage({ character }) {
         <li>gender: {character.gender}</li>
         <li>origin: {character.origin.name}</li>
       </div>
+
+      <hr />
+
+      <MapNoSSR />
     </div>
   );
 }
