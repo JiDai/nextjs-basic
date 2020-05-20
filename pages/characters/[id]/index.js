@@ -6,7 +6,7 @@ import Navigation from "../../../components/Navigation";
 import debug from "../../../helpers/debug";
 
 const MapNoSSR = dynamic(() => import("../../../components/Map"), {
-  ssr: false
+    ssr: false
 });
 
 export default function CharacterPage({ character }) {
@@ -26,19 +26,18 @@ export default function CharacterPage({ character }) {
         <title>{character.name} presentation | Rick and Morty characters</title>
       </Head>
 
-      <Navigation />
-
+      <Navigation/>
       <h1>{character.name}</h1>
-      <img src={character.image} alt="" />
+      <img src={character.image} alt=""/>
       <div>
-        <li>species: {character.species}</li>
-        <li>gender: {character.gender}</li>
-        <li>origin: {character.origin.name}</li>
+          <li>species: {character.species}</li>
+          <li>gender: {character.gender}</li>
+          <li>origin: {character.origin.name}</li>
       </div>
 
-      <hr />
+      <hr/>
 
-      <MapNoSSR />
+      <MapNoSSR/>
     </div>
   );
 }
