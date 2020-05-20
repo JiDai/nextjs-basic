@@ -9,8 +9,8 @@ export default function Navigation() {
         </Link>
       </li>
       <li>
-        <Link href="/about">
-          <a>About</a>
+        <Link href="/episodes">
+          <a>Episodes</a>
         </Link>
       </li>
       <li>

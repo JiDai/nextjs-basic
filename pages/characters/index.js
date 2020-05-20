@@ -33,11 +33,13 @@ export default function CharactersPage({ characters }) {
   );
 }
 
-CharactersPage.getInitialProps = async function(ctx) {
+export async function getStaticProps(ctx) {
   debug(ctx);
   const response = await fetch("https://rickandmortyapi.com/api/character/");
   const characters = await response.json();
   return {
-    characters: characters.results
+    props: {
+      characters: characters.results
+    }
   };
-};
+}
