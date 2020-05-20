@@ -1,14 +1,13 @@
-import Head from "next/head";
+import Head from "../components/Head";
 import Navigation from "../components/Navigation";
-import Metas from "../components/Metas";
 
 export default function AboutPage() {
   return (
     <div>
       <Head>
         <title>About</title>
-        <Metas />
       </Head>
+
       <Navigation />
 
       <h1>About</h1>

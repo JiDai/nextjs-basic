@@ -1,14 +1,11 @@
-import Head from "next/head";
-
-import Navigation from "../../components/Navigation";
-import Metas from "../../components/Metas";
+import Head from "../../../components/Head";
+import Navigation from "../../../components/Navigation";
 
 export default function CharacterPage({ character }) {
   return (
     <div>
       <Head>
         <title>{character.name} presentation | Rick and Morty characters</title>
-        <Metas />
       </Head>
 
       <Navigation />
@@ -17,7 +14,7 @@ export default function CharacterPage({ character }) {
       <div>
         <li>species: {character.species}</li>
         <li>gender: {character.gender}</li>
-        <li>origin: {character.origin}</li>
+        <li>origin: {character.origin.name}</li>
       </div>
     </div>
   );

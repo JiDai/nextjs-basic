@@ -1,15 +1,13 @@
-import Head from "next/head";
 import Link from "next/link";
 
+import Head from "../../components/Head";
 import Navigation from "../../components/Navigation";
-import Metas from "../../components/Metas";
 
 export default function CharactersPage({ characters }) {
   return (
     <div>
       <Head>
         <title>Rick and Morty characters</title>
-        <Metas />
       </Head>
 
       <Navigation />

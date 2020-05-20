@@ -1,13 +1,11 @@
-import Head from "next/head";
+import Head from "../components/Head";
 import Navigation from "../components/Navigation";
-import Metas from "../components/Metas";
 
 export default function IndexPage() {
   return (
     <div>
       <Head>
         <title>Home</title>
-        <Metas />
       </Head>
       <Navigation />
 
