@@ -14,7 +14,9 @@ export default function CharacterPage({ character }) {
   if (router.isFallback) {
     return (
       <div>
-        <title>Loading... | Rick and Morty characters</title>
+        <Head>
+          <title>Loading... | Rick and Morty characters</title>
+        </Head>
         <div>Loading...</div>
       </div>
     );
