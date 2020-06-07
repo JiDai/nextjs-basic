@@ -29,10 +29,10 @@ export default function EpisodesPage({ episodes }) {
 EpisodesPage.getInitialProps = async function(ctx) {
   debug(ctx);
   // Get last apge
-  let response = await fetch("https://rickandmortyapi.com/api/episode/");
+  let response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/episode/`);
   response = await response.json();
   response = await fetch(
-    `https://rickandmortyapi.com/api/episode/?page=${response.info.pages}`
+    `${process.env.NEXT_PUBLIC_API_URL}/episode/?page=${response.info.pages}`
   );
   response = await response.json();
 

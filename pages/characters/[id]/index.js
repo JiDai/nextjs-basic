@@ -45,7 +45,7 @@ export default function CharacterPage({ character }) {
 }
 
 export async function getStaticPaths() {
-  const response = await fetch(`https://rickandmortyapi.com/api/character/`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/character/`);
   const characters = await response.json();
 
   return {
@@ -60,7 +60,7 @@ export async function getStaticProps(ctx) {
   debug(ctx);
   const id = ctx.params.id;
   const response = await fetch(
-    `https://rickandmortyapi.com/api/character/${id}`
+    `${process.env.NEXT_PUBLIC_API_URL}/character/${id}`
   );
   const character = await response.json();
   return {

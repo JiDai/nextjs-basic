@@ -35,7 +35,7 @@ export default function CharactersPage({ characters }) {
 
 export async function getStaticProps(ctx) {
   debug(ctx);
-  const response = await fetch("https://rickandmortyapi.com/api/character/");
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/character/`);
   const characters = await response.json();
   return {
     props: {
