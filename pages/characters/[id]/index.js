@@ -45,12 +45,11 @@ export default function CharacterPage({ character }) {
 }
 
 export async function getStaticPaths() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/character/`);
-  const characters = await response.json();
+  const characters = [{id: 1}];
 
   return {
-    paths: characters.results.map(character => ({
-      params: { id: String(character.id) }
+    paths: characters.map(character => ({
+        params: { id: String(character.id) }
     })),
     fallback: true
   };

@@ -15,7 +15,7 @@ export default function CharactersPage({ characters }) {
 
       <h1>Rick and Morty characters</h1>
       {characters &&
-        characters.map(character => {
+        characters.splice(0, 10).map(character => {
           return (
             <div key={`/characters/${character.id}`}>
               <Link href="/characters/[id]" as={`/characters/${character.id}`}>
