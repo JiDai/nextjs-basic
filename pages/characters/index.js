@@ -14,6 +14,7 @@ export default function CharactersPage({characters}) {
             <Navigation/>
 
             <h1>Rick and Morty characters</h1>
+            {console.log('characters: ', characters)}
             {characters &&
             characters.splice(0, 10).map(character => {
                 return (
@@ -35,7 +36,13 @@ export default function CharactersPage({characters}) {
 
 export async function getStaticProps(ctx) {
     debug(ctx);
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/character/`);
+
+    console.log('typeof window: ', typeof window)
+    const baseUrl = typeof window === 'undefined'
+        ? process.env.API_URL
+        : process.env.NEXT_PUBLIC_API_URL;
+
+    const response = await fetch(`${baseUrl}/character/`);
     const characters = await response.json();
     return {
         props: {
