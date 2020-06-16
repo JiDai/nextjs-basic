@@ -31,11 +31,11 @@ export default function CharacterPage({character}) {
             <Navigation/>
             <h1>{character.name}</h1>
             <img src={character.image} alt=""/>
-            <div>
+            <ul>
                 <li>species: {character.species}</li>
                 <li>gender: {character.gender}</li>
                 <li>origin: {character.origin.name}</li>
-            </div>
+            </ul>
 
             <hr/>
 
