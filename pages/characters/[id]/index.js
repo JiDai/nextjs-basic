@@ -57,9 +57,15 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(ctx) {
     debug(ctx);
+    console.log('typeof window: ', typeof window)
+
+    const baseUrl = typeof window === 'undefined'
+        ? process.env.API_URL
+        : process.env.NEXT_PUBLIC_API_URL;
+
     const id = ctx.params.id;
     const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/character/${id}`
+        `${baseUrl}/character/${id}`
     );
     const character = await response.json();
     return {

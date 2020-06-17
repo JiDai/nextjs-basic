@@ -28,11 +28,17 @@ export default function EpisodesPage({episodes}) {
 
 EpisodesPage.getInitialProps = async function (ctx) {
     debug(ctx);
+    console.log('typeof window: ', typeof window)
+
+    const baseUrl = typeof window === 'undefined'
+        ? process.env.API_URL
+        : process.env.NEXT_PUBLIC_API_URL;
+
     // Get last apge
-    let response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/episode/`);
+    let response = await fetch(`${baseUrl}/episode/`);
     response = await response.json();
     response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/episode/?page=${response.info.pages}`
+        `${baseUrl}/episode/?page=${response.info.pages}`
     );
     response = await response.json();
 
