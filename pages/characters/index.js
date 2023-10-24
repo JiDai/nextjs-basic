@@ -20,12 +20,10 @@ export default function CharactersPage({characters}) {
                 return (
                     <div key={`/characters/${character.id}`}>
                         <Link href="/characters/[id]" as={`/characters/${character.id}`}>
-                            <a>
-                                <figure>
-                                    <img src={character.image} alt=""/>
-                                    <figcaption>{character.name}</figcaption>
-                                </figure>
-                            </a>
+                            <figure>
+                                <img src={character.image} alt=""/>
+                                <figcaption>{character.name}</figcaption>
+                            </figure>
                         </Link>
                     </div>
                 );

@@ -1,21 +1,22 @@
 import Link from "next/link";
 
+
 export default function Navigation() {
-  return (
+    return (
     <ul>
       <li>
         <Link href="/">
-          <a>Home</a>
+          Home
         </Link>
       </li>
       <li>
         <Link href="/episodes">
-          <a>Episodes</a>
+          Episodes
         </Link>
       </li>
       <li>
         <Link href="/characters">
-          <a>Characters</a>
+          Characters
         </Link>
       </li>
     </ul>

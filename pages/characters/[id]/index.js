@@ -5,7 +5,7 @@ import Head from "../../../components/Head";
 import Navigation from "../../../components/Navigation";
 import debug from "../../../helpers/debug";
 
-const MapNoSSR = dynamic(() => import("../../../components/Map"), {
+const SimpleCanvas = dynamic(() => import("../../../components/SimpleCanvas"), {
     ssr: false
 });
 
@@ -39,7 +39,7 @@ export default function CharacterPage({character}) {
 
             <hr/>
 
-            <MapNoSSR/>
+            <SimpleCanvas />
         </div>
     );
 }
