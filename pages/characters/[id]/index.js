@@ -5,7 +5,7 @@ import Head from "../../../components/Head";
 import Navigation from "../../../components/Navigation";
 import debug from "../../../helpers/debug";
 
-const MapNoSSR = dynamic(() => import("../../../components/Map"), {
+const SimpleCanvas = dynamic(() => import("../../../components/SimpleCanvas"), {
     ssr: false
 });
 
@@ -39,7 +39,7 @@ export default function CharacterPage({character}) {
 
             <hr/>
 
-            <MapNoSSR/>
+            <SimpleCanvas />
         </div>
     );
 }
@@ -57,9 +57,15 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(ctx) {
     debug(ctx);
+    console.log('typeof window: ', typeof window)
+
+    const baseUrl = typeof window === 'undefined'
+        ? process.env.API_URL
+        : process.env.NEXT_PUBLIC_API_URL;
+
     const id = ctx.params.id;
     const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/character/${id}`
+        `${baseUrl}/character/${id}`
     );
     const character = await response.json();
     return {
